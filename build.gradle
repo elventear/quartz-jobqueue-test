@@ -1,0 +1,38 @@
+apply plugin: 'groovy'
+apply plugin:'application'
+
+repositories {
+    mavenLocal()
+    maven {
+        name 'Bloom Artifactory'
+        credentials {
+            username bloom_artifactory_username //define in your ~/.gradle/gradle.properties file
+            password bloom_artifactory_password //define in your ~/.gradle/gradle.properties file
+        }
+        url "${bloom_artifactory_contextUrl}/repo" //defined in your ~/.gradle/gradle.properties file
+    }
+    maven {
+        name 'JBoss Repository'
+        url 'https://repository.jboss.org/nexus/content/groups/public'
+    }
+    maven {
+        name "Sonatype Nexus Repository"
+        url "https://oss.sonatype.org/content/repositories/snapshots"
+    }
+    maven {
+        name "Sonatype Nexus Releases"
+        url "http://oss.sonatype.org/content/repositories/releases"
+    }
+    maven {
+        name 'Excilys Repository'
+        url 'http://repository.excilys.com/content/groups/public'
+    }
+    jcenter()
+}
+ 
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.0.7'
+    compile 'org.quartz-scheduler:quartz:2.2.1'
+}
+
+mainClassName = "test.Test"
