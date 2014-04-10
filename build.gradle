@@ -4,14 +4,6 @@ apply plugin:'application'
 repositories {
     mavenLocal()
     maven {
-        name 'Bloom Artifactory'
-        credentials {
-            username bloom_artifactory_username //define in your ~/.gradle/gradle.properties file
-            password bloom_artifactory_password //define in your ~/.gradle/gradle.properties file
-        }
-        url "${bloom_artifactory_contextUrl}/repo" //defined in your ~/.gradle/gradle.properties file
-    }
-    maven {
         name 'JBoss Repository'
         url 'https://repository.jboss.org/nexus/content/groups/public'
     }
@@ -31,8 +23,9 @@ repositories {
 }
  
 dependencies {
+    compile 'org.slf4j:slf4j-simple:1.7.6'
     compile 'org.codehaus.groovy:groovy-all:2.0.7'
     compile 'org.quartz-scheduler:quartz:2.2.1'
 }
 
-mainClassName = "test.Test"
+mainClassName = "test.ThreadQueueTest"
